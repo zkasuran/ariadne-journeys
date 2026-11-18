@@ -1,0 +1,35 @@
+{
+  "name": "ariadne-journeys",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Repair a checkout rule against a customer-owned contract, then finish the order in a real browser.",
+  "license": "LicenseRef-zkasuran-SAND-1.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc && node dist/scripts/build.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "node dist/scripts/source-check.js",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "start": "node dist/src/server.js",
+    "demo": "node dist/scripts/demo.js",
+    "verify": "bash verify.sh",
+    "deploy": "wrangler pages deploy site --project-name ariadne-journeys --branch main",
+    "preview": "wrangler pages dev site"
+  },
+  "dependencies": {
+    "@x402/evm": "2.31.0",
+    "@x402/fetch": "2.31.0",
+    "quickjs-emscripten": "0.32.0",
+    "viem": "2.57.19"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.1",
+    "esbuild": "0.28.2",
+    "playwright": "1.65.1",
+    "typescript": "7.0.2",
+    "wrangler": "4.164.0"
+  }
+}
