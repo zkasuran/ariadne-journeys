@@ -9,6 +9,8 @@ artifacts/
 /submit/
 DEMO-*.mp4
 upload-*/
+ARIADNE-YOUTUBE-UPLOAD.zip
+CODEX-VIDEO-BRIEF.md
 CONTENT-*.html
 
 # wrangler files

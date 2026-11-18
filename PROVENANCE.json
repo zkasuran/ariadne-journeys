@@ -9,11 +9,11 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "9bb99696ec92eff3e40d608b45be92d3ffd1bbd3bceb58cb913c5020d102eb2c"
+      "sha256": "739cd1ae9011418f6ed0919b064f05d2b3d367bd4b692deb653c28c6667d8cc6"
     },
     {
       "path": "DATA-SOURCES.md",
-      "sha256": "526fdad774def5e10608ea9347e259edc2bed1c95d7bf7ce3b60fc9cb51fb587"
+      "sha256": "ba055aa295af264ad074f0a0a3005575372df1e47e3ba4df7acc9b17dd632472"
     },
     {
       "path": "LICENSE",
@@ -117,7 +117,7 @@
     },
     {
       "path": "scripts/release-check.ts",
-      "sha256": "cc4fb5be0256d95c17da3737153d95687d41d6385aebbbaa80c23113a69fba33"
+      "sha256": "841911bab701192a5f81aea9a603381a00d7aebaf315da14ae8870c307c4fc99"
     },
     {
       "path": "scripts/report.ts",
@@ -161,7 +161,7 @@
     },
     {
       "path": "src/telegraph.ts",
-      "sha256": "72802abffab5b78e6824917fc8f3700be926d4f358a1564ac9e94bac951a86d1"
+      "sha256": "e46a5f454bccc8cd7cba869c946be852fff5b1f6d8aedf20a916b43e8056c591"
     },
     {
       "path": "test/core.test.mjs",

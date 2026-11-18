@@ -94,8 +94,12 @@ export function candidateFromAnswer(answer: Json): string {
     else if (value !== null && typeof value === 'object') Object.values(value).forEach(collect);
   }
   collect(answer);
-  const blocks = [...new Set(texts.flatMap(text => [...text.matchAll(/```(?:javascript|js)?\s*\n([\s\S]*?)```/g)].map(match => match[1]).filter((text): text is string => text !== undefined)))];
-  if (blocks.length !== 1 || !blocks[0]) return fail('The purchased answer must contain exactly one distinct JavaScript code block.');
+  const matches = texts.flatMap(text => [...text.matchAll(/```(?:javascript|js)?\s*\n([\s\S]*?)```/g)]);
+  const code = matches.map(match => match[1]).filter((text): text is string => text !== undefined);
+  const blocks = [...new Set(code)];
+  if (blocks.length !== 1 || !blocks[0]) {
+    return fail('The purchased answer must contain exactly one distinct JavaScript code block.');
+  }
   const candidate = blocks[0];
   if (new TextEncoder().encode(candidate).length > LIMITS.sourceBytes) return fail('Purchased candidate exceeds 16 KB.');
   return candidate;

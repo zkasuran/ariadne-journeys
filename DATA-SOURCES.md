@@ -37,3 +37,21 @@ Installed npm packages retain their original license files. See NOTICE and the
 version-pinned dependency manifest.
 
 No third-party fonts, stock images or protected datasets are bundled into the site.
+
+## Video soundtrack and glyphs
+
+The finished demo uses No Copyright Music by JoyInSound as a ducked soundtrack under
+original narration and product captures. The audio is not distributed on a standalone basis.
+[Track](https://pixabay.com/music/upbeat-no-copyright-music-398375/) and
+[binding terms, section 5](https://pixabay.com/service/terms/) were read before the video build.
+The track is Content ID registered; the upload package retains the licence link.
+
+<!-- voice-gate:off -->
+> we grant you an irrevocable, worldwide, perpetual (or as long as allowed by law),
+> non-exclusive and royalty-free right to download, use, copy, modify or adapt the
+> Content for commercial or non-commercial purposes ('Content License').
+<!-- voice-gate:on -->
+
+DejaVu system fonts are used for rendered video glyphs, not redistributed as font binaries.
+The installed Bitstream Vera licence grants rights to use and publish the Font Software,
+with its copyright and permission notices retained where the font software is distributed.

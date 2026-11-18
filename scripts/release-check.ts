@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: LicenseRef-zkasuran-SAND-1.0
-import { readFile, readdir, stat, mkdir, writeFile, copyFile } from 'node:fs/promises';
+import { readFile, stat, mkdir, writeFile, copyFile } from 'node:fs/promises';
+import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 import { createRequire } from 'node:module';
@@ -11,17 +12,8 @@ const require = createRequire(import.meta.url);
 const packageRoot = require.resolve('@jitl/quickjs-wasmfile-release-sync/package.json').replace(/package.json$/, '');
 await copyFile(join(packageRoot, 'LICENSE'), 'docs/licenses/QuickJS-MIT.txt');
 await copyFile('docs/licenses/QuickJS-MIT.txt', 'site/assets/THIRD-PARTY-NOTICES.txt');
-const ignored = new Set(['node_modules', 'dist', 'site', '.git', '.hq', 'artifacts', 'submit']);
-const publicFiles: string[] = [];
-async function walk(path: string): Promise<void> {
-  for (const entry of await readdir(path, { withFileTypes: true })) {
-    if (ignored.has(entry.name) || entry.name.startsWith('CONTENT-') || entry.name.startsWith('DEMO-')) continue;
-    const name = join(path, entry.name);
-    if (entry.isDirectory()) await walk(name);
-    else if (entry.isFile()) publicFiles.push(name.replace(/^\.\//, ''));
-  }
-}
-await walk('.');
+const publicFiles = [...new Set(execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z'], { encoding: 'utf8', maxBuffer: 1024 * 1024 }).split('\0').filter(Boolean))];
+if (publicFiles.some(path => path.startsWith('.hq/') || path.startsWith('submit/') || path.startsWith('upload-') || path.startsWith('CONTENT-') || path.startsWith('DEMO-') || path === 'CODEX-VIDEO-BRIEF.md')) throw new Error('Private release material entered the public file list.');
 for (const path of publicFiles) {
   if (/\.env$|\.pem$|\.key$/.test(path)) throw new Error(`Secret-shaped public path ${path}`);
   const bytes = await readFile(path);
